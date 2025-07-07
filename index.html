@@ -3,496 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>unfoundbox</title>
+    <title>Unfoundbox</title>
     <style>
-        body, html {
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #000;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            color: #0f0;
+            box-sizing: border-box;
         }
-
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            opacity: 1;
-        }
-
-        .matrix-rain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .terminal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 20, 0, 0.7);
-            border: 1px solid #0f0;
-            width: 80%;
-            max-width: 800px;
-            height: 400px;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
-            overflow: hidden;
-            opacity: 0;
-            animation: terminalAppear 1s 1s forwards;
-        }
-
-        @keyframes terminalAppear {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1);
-            }
-        }
-
-        .terminal-header {
+        
+        body {
+            font-family: 'Inter', sans-serif;
             background: #0a0a0a;
-            color: #0f0;
-            padding: 5px 10px;
-            font-size: 14px;
-            border-bottom: 1px solid #0f0;
-            display: flex;
-            justify-content: space-between;
+            color: #ffffff;
+            line-height: 1.6;
+            font-weight: 300;
         }
-
-        .terminal-title {
-            font-weight: bold;
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 40px;
         }
-
-        .terminal-buttons {
-            display: flex;
+        
+        .brand {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 80px;
+            letter-spacing: -0.02em;
         }
-
-        .terminal-button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-left: 8px;
-            background: #333;
-            border: 1px solid #444;
+        
+        .content {
+            space-y: 40px;
         }
-
-        .terminal-content {
-            padding: 10px;
-            font-family: 'Courier New', monospace;
-            height: calc(100% - 32px);
-            overflow: hidden;
+        
+        .question {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 40px;
+            line-height: 1.4;
+            text-align: center;
         }
-
-        .command-line {
-            height: 20px;
-            margin-bottom: 5px;
-            white-space: nowrap;
-            overflow: hidden;
-            position: relative;
+        
+        .paragraph {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-align: center;
         }
-
-        .command-prompt {
-            color: #0f0;
-            margin-right: 5px;
+        
+        .highlight {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            margin: 60px 0;
+            letter-spacing: -0.03em;
         }
-
-        .command-text {
-            position: relative;
-            color: #0f0;
-            display: inline-block;
+        
+        .emphasis {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #666666;
+            text-align: center;
+            margin: 40px 0;
+            font-style: italic;
         }
-
-        .cursor {
-            position: absolute;
-            top: 0;
-            right: -10px;
-            width: 8px;
-            height: 16px;
-            background-color: #0f0;
-            animation: blink 1s infinite;
+        
+        .closing {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 60px;
+            line-height: 1.5;
         }
-
-        @keyframes blink {
-            0%, 49% {
-                opacity: 1;
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 20px;
             }
-            50%, 100% {
-                opacity: 0;
+            
+            .brand {
+                font-size: 2rem;
             }
-        }
-
-        .scan-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: rgba(0, 255, 0, 0.3);
-            opacity: 0.7;
-            animation: scan 6s linear infinite;
-        }
-
-        @keyframes scan {
-            0% {
-                top: 0%;
+            
+            .question {
+                font-size: 1.3rem;
             }
-            100% {
-                top: 100%;
+            
+            .paragraph {
+                font-size: 1rem;
             }
-        }
-
-        .glitch-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 255, 0, 0.02);
-            opacity: 0;
-            pointer-events: none;
-            animation: glitch 0.2s linear infinite;
-        }
-
-        @keyframes glitch {
-            0% {
-                opacity: 0;
+            
+            .highlight {
+                font-size: 2.2rem;
             }
-            5% {
-                opacity: 0.1;
+            
+            .emphasis {
+                font-size: 1.1rem;
             }
-            10% {
-                opacity: 0;
-            }
-            15% {
-                opacity: 0.1;
-            }
-            20% {
-                opacity: 0;
-            }
-            55% {
-                opacity: 0;
-            }
-            60% {
-                opacity: 0.3;
-            }
-            65% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-
-        .digital-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .digit {
-            position: absolute;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            opacity: 0.8;
-            text-shadow: 0 0 5px #0f0;
-        }
-
-        .loading-bar-container {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            max-width: 500px;
-            height: 20px;
-            border: 1px solid #0f0;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-            opacity: 0;
-            animation: appear 0.5s 3s forwards;
-        }
-
-        .loading-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(to right, #032, #0f0);
-            animation: load 3s 3.5s forwards;
-        }
-
-        @keyframes load {
-            0% {
-                width: 0%;
-            }
-            100% {
-                width: 100%;
-            }
-        }
-
-        @keyframes appear {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .access-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 32px;
-            text-transform: uppercase;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px #0f0;
-            white-space: nowrap;
-            opacity: 0;
-            z-index: 100;
-        }
-
-        .flicker {
-            animation: flicker 4s linear 5s forwards;
-        }
-
-        @keyframes flicker {
-            0% {
-                opacity: 0;
-            }
-            5% {
-                opacity: 0.5;
-            }
-            10% {
-                opacity: 0.2;
-            }
-            15% {
-                opacity: 0.8;
-            }
-            20% {
-                opacity: 0.1;
-            }
-            25% {
-                opacity: 0.6;
-            }
-            30% {
-                opacity: 0.9;
-            }
-            100% {
-                opacity: 1;
+            
+            .closing {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="background"></div>
-        <div class="matrix-rain"></div>
-        <div class="digital-particles"></div>
-        <div class="glitch-overlay"></div>
-        
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-title">unfoundbox.exe</div>
-                <div class="terminal-buttons">
-                    <div class="terminal-button"></div>
-                    <div class="terminal-button"></div>
-                    <div class="terminal-button"></div>
-                </div>
-            </div>
-            <div class="terminal-content">
-                <div class="scan-line"></div>
-                <!-- Terminal content will be dynamically generated -->
-            </div>
+        <div class="content">
+            <div class="question">what does a well crafted life mean to you?</div>
+            
+            <div class="question">have you ever found yourself at crossroads?</div>
+            
+            <div class="paragraph">situations where a socially conditioned part of you wants to do what will make you fit in well in society and won't make people raise their eyebrows.</div>
+            
+            <div class="paragraph">and another part, the authentic you, wants to dig deeper into the truth, your truth, and do what seems meaningful to you</div>
+            
+            <div class="paragraph">that was the germ of the idea and led to the naamkaran of my life project</div>
+            
+            <div class="highlight">unfoundbox</div>
+            
+            <div class="emphasis">eh so what, it's just a made up name, does it even mean anything</div>
+            
+            <div class="paragraph">thinking outside the box is a phrase that's thrown around a lot.</div>
+            
+            <div class="paragraph">the 3 dimensions surround you and the people in it make you feel that is all there is to think</div>
+            
+            <div class="paragraph">till you go within, internalize what ideas, desires make you feel alive, give you meaning, and the courage to not live someone else's life</div>
+            
+            <div class="closing">the courage to not live someone else's life</div>
         </div>
-        
-        <div class="loading-bar-container">
-            <div class="loading-bar"></div>
-        </div>
-        
-        <div class="access-text flicker">ACCESS GRANTED</div>
     </div>
-
-    <script>
-        // Create Matrix digital rain
-        const matrixRain = document.querySelector('.matrix-rain');
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        matrixRain.appendChild(canvas);
-        
-        // Matrix characters
-        const characters = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
-        
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        
-        // Array to track the y position of each column
-        const drops = [];
-        for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
-        }
-        
-        function drawMatrixRain() {
-            // Semi-transparent black to create trail effect
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#0f0';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < drops.length; i++) {
-                // Random character
-                const text = characters.charAt(Math.floor(Math.random() * characters.length));
-                
-                // x coordinate of the drop, y coordinate is drops[i] * fontSize
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                // Randomly reset drops to top with random delay
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                
-                // Increment y coordinate
-                drops[i]++;
-            }
-        }
-        
-        // Create binary digit particles
-        const digitalParticles = document.querySelector('.digital-particles');
-        for (let i = 0; i < 50; i++) {
-            const digit = document.createElement('div');
-            digit.classList.add('digit');
-            
-            // Random 0 or 1
-            digit.textContent = Math.random() > 0.5 ? '1' : '0';
-            
-            // Random position
-            digit.style.left = `${Math.random() * 100}%`;
-            digit.style.top = `${Math.random() * 100}%`;
-            
-            // Random animation
-            digit.style.animation = `
-                ${Math.random() * 3 + 2}s ease-in-out ${Math.random() * 2}s infinite alternate
-            `;
-            
-            digitalParticles.appendChild(digit);
-        }
-        
-        // Terminal typing effect
-        function createTerminalContent() {
-            const terminalContent = document.querySelector('.terminal-content');
-            
-            const commands = [
-                {text: 'connect --target=unfoundbox.com --port=443 --secure', delay: 500},
-                {text: 'run vulnerability_scan.exe', delay: 1000},
-                {text: 'analyzing system...', delay: 2000},
-                {text: 'bypassing security protocol...', delay: 1500},
-                {text: 'injecting payload...', delay: 1200},
-                {text: 'access --credentials=*********', delay: 1000},
-                {text: 'redirecting to secure server...', delay: 800}
-            ];
-            
-            let currentLine = 0;
-            let currentChar = 0;
-            let currentCommand = null;
-            let commandLine = null;
-            
-            function addNewCommandLine() {
-                currentCommand = commands[currentLine];
-                
-                commandLine = document.createElement('div');
-                commandLine.classList.add('command-line');
-                
-                const prompt = document.createElement('span');
-                prompt.classList.add('command-prompt');
-                prompt.textContent = 'root@unfoundbox:~# ';
-                
-                const commandText = document.createElement('span');
-                commandText.classList.add('command-text');
-                
-                const cursor = document.createElement('span');
-                cursor.classList.add('cursor');
-                
-                commandText.appendChild(cursor);
-                commandLine.appendChild(prompt);
-                commandLine.appendChild(commandText);
-                terminalContent.appendChild(commandLine);
-                
-                currentChar = 0;
-                
-                return commandText;
-            }
-            
-            function typeNextChar() {
-                if (currentLine >= commands.length) {
-                    return;
-                }
-                
-                const commandText = commandLine.querySelector('.command-text');
-                
-                if (currentChar < currentCommand.text.length) {
-                    commandText.textContent = currentCommand.text.substring(0, currentChar + 1);
-                    currentChar++;
-                    setTimeout(typeNextChar, 50); // Typing speed
-                } else {
-                    currentLine++;
-                    if (currentLine < commands.length) {
-                        setTimeout(() => {
-                            commandText.appendChild(document.createElement('span')).classList.add('cursor');
-                            const newCommandText = addNewCommandLine();
-                            setTimeout(typeNextChar, 50);
-                        }, currentCommand.delay);
-                    }
-                }
-            }
-            
-            const firstCommandText = addNewCommandLine();
-            setTimeout(typeNextChar, 500); // Start typing after a delay
-        }
-        
-        // Animation loop for matrix rain
-        function animate() {
-            drawMatrixRain();
-            requestAnimationFrame(animate);
-        }
-        
-        // Start animations
-        animate();
-        createTerminalContent();
-        
-        // Redirect after 6 seconds
-        setTimeout(() => {
-            window.location.href = 'https://blog.unfoundbox.com';
-        }, 8000); // Increased to 8 seconds to allow for more of the animation to be seen
-        
-        // Also redirect on any click
-        document.body.addEventListener('click', () => {
-            window.location.href = 'https://blog.unfoundbox.com';
-        });
-    </script>
 </body>
-</html> 
+</html>
