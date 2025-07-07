@@ -1,8 +1,6 @@
-# unfoundbox
+# what does a well crafted life mean to you?
 
-## what does a well crafted life mean to you?
-
-## have you ever found yourself at crossroads?
+# have you ever found yourself at crossroads?
 
 > situations where a socially conditioned part of you wants to do what will make you fit in well in society and won't make people raise their eyebrows.
 
