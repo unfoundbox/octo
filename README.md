@@ -1,26 +1,27 @@
-# Unfound Box Hacker Entrance
+# unfoundbox
 
-A dramatic hacker-themed web animation that redirects visitors to blog.unfoundbox.com.
+## what does a well crafted life mean to you?
 
-## Features
+## have you ever found yourself at crossroads?
 
-- Matrix-style digital rain animation using HTML5 Canvas
-- Interactive terminal with typing effect and command execution simulation
-- Glitch effects and scan lines for authentic cyberpunk aesthetics
-- Binary digit particles and digital glitches
-- Loading bar and "ACCESS GRANTED" message for dramatic effect
-- Automatic redirect after 8 seconds
-- Click-anywhere redirect functionality
-- Fully responsive design
+> situations where a socially conditioned part of you wants to do what will make you fit in well in society and won't make people raise their eyebrows.
 
-## How to Use
+> and another part, the authentic you, wants to dig deeper into the truth, your truth, and do what seems meaningful to you
 
-Simply open `index.html` in any modern web browser to experience the hacker animation. After 8 seconds or upon clicking anywhere on the page, you'll be redirected to blog.unfoundbox.com.
+that was the germ of the idea and led to the naamkaran of my life project
 
-## Technologies Used
+---
 
-- HTML5 Canvas for matrix digital rain
-- CSS3 animations and keyframes
-- JavaScript DOM manipulation
-- Dynamic content generation
-- Timing functions and requestAnimationFrame
+# **unfoundbox**
+
+*eh so what, it's just a made up name, does it even mean anything?*
+
+thinking outside the box is a phrase that's thrown around a lot.
+
+the 3 dimensions surround you and the people in it make you feel that is all there is to think
+
+till you go within, internalize what ideas, desires make you feel alive, give you meaning, and the courage to not live someone else's life
+
+---
+
+## **the courage to not live someone else's life**
